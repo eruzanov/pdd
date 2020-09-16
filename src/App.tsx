@@ -1,19 +1,22 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Exams from './pages/exams';
-import Exam from './pages/exam';
+import ExamsProvider from './context/ExamsContext';
+import Exams from './containers/Exams';
+import Exam from './containers/Exam';
 
 function App() {
     return (
         <Router>
-            <Switch>
-                <Route exact path="/">
-                    <Exams />
-                </Route>
-                <Route path="/exam/:id">
-                    <Exam />
-                </Route>
-            </Switch>
+            <ExamsProvider>
+                <Switch>
+                    <Route exact path="/">
+                        <Exams />
+                    </Route>
+                    <Route path="/exam/:id">
+                        <Exam />
+                    </Route>
+                </Switch>
+            </ExamsProvider>
         </Router>
     );
 }
